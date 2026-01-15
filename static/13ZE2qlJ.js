@@ -1,0 +1,1 @@
+import{r as a,c as n,d as s,b as r,t as l,h as _,w as c,J as i,o as u}from"./BPOr1mXb.js";const m={style:{"font-size":"1rem"}},x={__name:"[...all]",setup(p){const t=a(0);return t.value=String(new Date),(d,e)=>{const o=i;return u(),n("div",m,[s(" test "+l(_(t))+" ",1),r(o,null,{default:c(()=>e[0]||(e[0]=[s("测试按钮")])),_:1,__:[0]})])}}};export{x as default};
