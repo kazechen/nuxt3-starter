@@ -1,0 +1,1 @@
+import{bN as a}from"./Ch3Xtw-u.js";const o=[{code:"en",file:"en.json",name:"English"}],l=o.map(e=>e.code),s=()=>({legacy:!1,locale:"en",availableLocales:l,fallbackLocale:"en",messages:{en:a}});export{s as default};
