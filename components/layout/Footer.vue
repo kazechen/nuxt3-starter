@@ -5,6 +5,7 @@ import { useCurrencyStore } from '~/store/currency'
 const quickLinks = ref([
   { name: 'Store', path: '/store' },
   { name: 'Login', path: '/login' },
+  { name: 'Lab', path: '/lab' },
 ])
 </script>
 
