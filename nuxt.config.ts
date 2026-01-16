@@ -3,6 +3,7 @@ import { appDescription } from './constants/index'
 import { currentLocales } from './i18n'
 
 export default defineNuxtConfig({
+  ssr: false,
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
@@ -15,9 +16,7 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
   ],
 
-  plugins: [
-    '~/plugins/permission.ts',
-  ],
+  plugins: ['~/plugins/permission.ts'],
 
   vite: {
     optimizeDeps: {
@@ -26,7 +25,12 @@ export default defineNuxtConfig({
   },
 
   elementPlus: {
-    installMethods: ['ElLoading', 'ElMessage', 'ElMessageBox', 'ElNotification'],
+    installMethods: [
+      'ElLoading',
+      'ElMessage',
+      'ElMessageBox',
+      'ElNotification',
+    ],
   },
 
   experimental: {
@@ -99,7 +103,8 @@ export default defineNuxtConfig({
     ],
   },
   app: {
-    baseURL: '/',
+    baseURL: process.env.NODE_ENV === 'production' ? '/nuxt3-starter/' : '/',
+    buildAssetsDir: '/static/',
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [
@@ -107,13 +112,23 @@ export default defineNuxtConfig({
         // { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
         // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap' },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap',
+        },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: 'black-translucent',
+        },
       ],
       script: [
         {
