@@ -1,0 +1,1 @@
+import{_ as t}from"./DlAUqK2U.js";import{c as s,o as r,d as n,p as a}from"./DHzqGcNI.js";const c={},f={style:{"font-size":"20px"}};function l(o,e){return r(),s("main",f,[e[0]||(e[0]=n(" [这是HOME的layout] ")),a(o.$slots,"default")])}const _=t(c,[["render",l]]);export{_ as default};

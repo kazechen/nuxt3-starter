@@ -1,0 +1,1 @@
+import{r as t,c as a,t as s,h as n,o as r}from"./DHzqGcNI.js";const o={style:{"font-size":"1rem"}},m={__name:"[...all]",setup(c){const e=t(0);return e.value=String(new Date),(i,_)=>(r(),a("div",o," admin "+s(n(e)),1))}};export{m as default};
