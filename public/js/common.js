@@ -1,0 +1,172 @@
+// // 禁止右鍵
+// document.oncontextmenu = function () {
+//   return false;
+// }
+// // 禁止f12
+// document.onkeydown = function () {
+//   if (window.event && window.event.keyCode == 123) {
+//     window.event.returnValue = false;
+//   }
+// }
+// // 禁止複製
+// document.oncopy = function (event) {
+//   console.log("ctrl + c");
+//   return false;
+// }
+/**
+ * 點擊打開新頁面跳轉連結
+ * @param {string} url
+ */
+function router(url) {
+  const strUrl = url
+  const a = document.createElement('a')
+  document.body.appendChild(a)
+  a.style = 'display: none'
+  a.target = '_blank'
+  a.href = strUrl
+  a.click()
+  document.body.removeChild(a)
+}
+
+let wow = null
+wow = new WOW(
+  {
+    boxClass: 'wow', // default
+    animateClass: 'animated', // default
+    offset: 0, // default
+    mobile: true, // default
+    live: true, // default
+  },
+)
+wow?.init()
+
+let mySwiper = null
+mySwiper = new Swiper('.header-swiper', {
+  autoplay: true,
+  effect: 'fade',
+  autoplay: {
+    delay: 3000,
+    stopOnLastSlide: false,
+    disableOnInteraction: false,
+  },
+  loop: true,
+  noSwiping: true,
+})
+function SetSwiperIndex(index) {
+  $('.inactive').each(function () {
+    if ($(this)[0] === $('.inactive')[index])
+      $(this).addClass('active')
+
+    else
+      $(this).removeClass('active')
+  })
+}
+SetSwiperIndex(mySwiper.realIndex)
+mySwiper.on('slideChange', () => {
+  SetSwiperIndex(mySwiper.realIndex)
+})
+window.addEventListener('scroll', () => {
+  const el = document.querySelector('.header')
+  if ((document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset) > 100)
+    el.classList.add('untransparent')
+
+  else
+    el.classList.remove('untransparent')
+})
+
+$('.right-flow-4').click(() => {
+  $('html,body').animate({ scrollTop: 0 }, 500)
+})
+
+$('.expand').click(() => {
+  $('.m').hasClass('m-all') ? $('.m').removeClass('m-all') : $('.m').addClass('m-all')
+})
+
+$('.solve-item').click(function () {
+  $(this).addClass('active').siblings().removeClass('active')
+  $($('.r')[$(this).attr('data-index')]).addClass('flex-show').siblings().removeClass('flex-show')
+})
+$('.h-new-left-2').click(function () {
+  $(this).addClass('h-new-left-active').siblings().removeClass('h-new-left-active')
+  $($('.h-new-z')[$(this).attr('data-index')]).addClass('block-show').siblings().removeClass('block-show')
+})
+let cuSwiper = null
+cuSwiper = new Swiper('.cu-swiper', {
+  autoplay: true,
+  autoplay: {
+    delay: 2000,
+    stopOnLastSlide: false,
+    disableOnInteraction: false,
+  },
+  loop: true,
+})
+
+function SetSwiperIndexCu(index) {
+  $('.cu-inactive').each(function () {
+    if ($(this)[0] === $('.cu-inactive')[index])
+      $(this).addClass('cu-active')
+
+    else
+      $(this).removeClass('cu-active')
+  })
+}
+SetSwiperIndexCu(cuSwiper.realIndex)
+cuSwiper.on('slideChange', () => {
+  console.log()
+  SetSwiperIndexCu(cuSwiper.realIndex)
+})
+
+let reg_tel = ''
+reg_tel = /^(13\d|14[014-9]|15[0-35-9]|16[2567]|17[0-8]|18\d|19[0-35-9])\d{8}$/
+$('.submit-btn').click(() => {
+  if (!$('#nameee').val())
+    notyf.error('姓名為空!')
+
+  else if (!reg_tel.test($('#coneee').val()))
+    notyf.error('手機號格式錯誤!')
+
+  else
+    submitForm({ name: $('#nameee').val(), connect: $('#coneee').val() })
+})
+
+function submitForm(data) {
+  $.ajax({
+    url: 'https://formspree.io/f/xnqybpbb',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data,
+    crossDomain: true,
+  }).always(() => {
+    notyf.success('提交成功')
+    $('#coneee').val('')
+    $('#nameee').val('')
+  })
+}
+
+let clipboard = null
+clipboard = new ClipboardJS('.copyphone')
+clipboard.on('success', (e) => {
+  notyf.open(
+    {
+      type: 'kkk',
+      message: '已成功複製聯繫電話:4006088330',
+    },
+  )
+})
+
+$('.h-new-imgg').click(() => {
+  router('./doc/detail.html')
+})
+$('.right-flow-2').click(() => {
+  router('https://work.weixin.qq.com/kfid/kfcdb13b7bf17761072')
+})
+$('.m-btn1').click(function () {
+  if ($(this).hasClass('disablee')) {
+
+  }
+  else {
+    router('https://standard.xwork.cn/login')
+  }
+})
