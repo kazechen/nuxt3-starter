@@ -1,0 +1,1 @@
+import{as as a}from"./IrU7nRfj.js";const o=[{code:"en",file:"en.json",name:"English"}],l=o.map(e=>e.code),c=()=>({legacy:!1,locale:"en",availableLocales:l,fallbackLocale:"en",messages:{en:a}});export{c as default};

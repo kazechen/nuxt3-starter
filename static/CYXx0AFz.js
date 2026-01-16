@@ -1,1 +1,0 @@
-import{e as n,f as t,g as a,c as s,o as c}from"./DHzqGcNI.js";const l=n({__name:"about",setup(r){return t(()=>{}),a((e,o)=>{console.log("组件内的守卫",e,o)}),(e,o)=>(c(),s("div",null,"跳转成功 /about"))}});export{l as default};
